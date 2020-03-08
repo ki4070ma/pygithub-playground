@@ -34,7 +34,8 @@ def main():
         for issue in d[key]:
             s_time = issue.created_at.strftime("%Y-%m-%d")
             e_time = issue.closed_at.strftime("%Y-%m-%d") if issue.closed_at else ''
-            print(s_time, e_time, issue.title)
+            days = (issue.closed_at - issue.created_at).days if e_time else '-'
+            print(s_time, e_time, f'{days} days', issue.title)
 
 if __name__ == '__main__':
     # tutorial()
